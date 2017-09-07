@@ -1,5 +1,8 @@
 class HomesController < ApplicationController
-def show
-render
+	def show
+		render
+	end
 end
-end
+
+
+
