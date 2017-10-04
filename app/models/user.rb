@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  has_many :shouts, dependent: :destroy
   include Clearance::User
+  
   validates :username, presence:true, uniqueness:true
+  has_many :shouts, dependent: :destroy
   has_many :likes
   has_many :liked_shouts, through: :likes, source: :shout 
 
@@ -15,5 +16,9 @@ class User < ApplicationRecord
 
   def unlike(shout)
   	liked_shouts.destroy(shout)
+  end
+
+  def to_param
+    username
   end
 end
